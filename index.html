@@ -72,6 +72,7 @@ button {
 </div>
 
 <script>
+<script>
 function kabur() {
     let x = Math.random() * (window.innerWidth - 100);
     let y = Math.random() * (window.innerHeight - 50);
@@ -80,15 +81,13 @@ function kabur() {
 }
 
 function jawabYes() {
+    var music = new Audio("lagu.mp3");
+    music.loop = true;
+    music.play();
 
-    // Putar musik saat klik YES
-    document.getElementById("bgm").play();
-
-    // Ganti tampilan
     document.body.innerHTML = `
-    <div style="display:flex;justify-content:center;align-items:center;height:100vh;
-    background:url('https://images.unsplash.com/photo-1520637836862-4d197d17c3a4') no-repeat center center/cover;">
-        <h1 style="color:white;font-size:40px;text-shadow:2px 2px 5px hotpink;">
+    <div style="display:flex;justify-content:center;align-items:center;height:100vh;background:pink;">
+        <h1 style="color:white;font-size:40px;">
         Yeayyy 🌷❤️ Sekarang kita resmi 😆💖
         </h1>
     </div>
