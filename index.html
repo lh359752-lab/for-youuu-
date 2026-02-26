@@ -3,46 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tulip Untukmu 🌷</title>
+<title>Untuk Kamu 🌷</title>
 
 <style>
-body {
+* {
     margin: 0;
     padding: 0;
-    text-align: center;
-    font-family: 'Comic Sans MS', cursive;
-    height: 100vh;
-    overflow: hidden;
-    background: url('https://images.unsplash.com/photo-1520637836862-4d197d17c3a4') no-repeat center center/cover;
+    box-sizing: border-box;
 }
 
-.overlay {
-    background: rgba(255, 182, 193, 0.6);
+body {
     height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: Arial, sans-serif;
+    background: url('https://images.unsplash.com/photo-1520637836862-4d197d17c3a4') no-repeat center center/cover;
+    overflow: hidden;
+}
+
+.container {
+    background: rgba(255, 182, 193, 0.7);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
 }
 
 h1 {
-    font-size: 32px;
     color: white;
-    text-shadow: 2px 2px 5px hotpink;
+    margin-bottom: 20px;
+    font-size: 28px;
 }
 
 button {
     padding: 12px 25px;
     font-size: 18px;
     margin: 10px;
-    cursor: pointer;
-    border-radius: 20px;
     border: none;
+    border-radius: 20px;
+    cursor: pointer;
     transition: 0.3s;
 }
 
 #yes {
-    background-color: #ff4da6;
+    background: #ff4da6;
     color: white;
 }
 
@@ -51,7 +55,7 @@ button {
 }
 
 #no {
-    background-color: gray;
+    background: gray;
     color: white;
     position: absolute;
 }
@@ -60,39 +64,54 @@ button {
 
 <body>
 
-<!-- BACKSOUND -->
-<audio id="bgm" loop>
-  <source src="lagu.mp3" type="audio/mpeg">
-</audio>
-
-<div class="overlay">
+<div class="container">
     <h1>Mau gak jadi pacarku? 🌷❤️</h1>
-    <button id="yes" onclick="jawabYes()">Yes</button>
-    <button id="no" onmouseover="kabur()">No</button>
+    <button id="yes">Yes</button>
+    <button id="no">No</button>
 </div>
 
 <script>
-<script>
-function kabur() {
-    let x = Math.random() * (window.innerWidth - 100);
-    let y = Math.random() * (window.innerHeight - 50);
-    document.getElementById("no").style.left = x + "px";
-    document.getElementById("no").style.top = y + "px";
-}
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
 
-function jawabYes() {
-    var music = new Audio("lagu.mp3");
+// Tombol No kabur
+noBtn.addEventListener("mouseover", function() {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+});
+
+// Klik Yes
+yesBtn.addEventListener("click", function() {
+
+    // Putar musik
+    const music = new Audio("lagu.mp3");
     music.loop = true;
     music.play();
 
+    // Ganti tampilan
     document.body.innerHTML = `
-    <div style="display:flex;justify-content:center;align-items:center;height:100vh;background:pink;">
-        <h1 style="color:white;font-size:40px;">
+    <div style="
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:url('https://images.unsplash.com/photo-1520637836862-4d197d17c3a4') no-repeat center center/cover;
+        ">
+        <h1 style="
+            color:white;
+            font-size:40px;
+            text-shadow:2px 2px 5px hotpink;
+            background:rgba(255,182,193,0.7);
+            padding:30px;
+            border-radius:20px;
+        ">
         Yeayyy 🌷❤️ Sekarang kita resmi 😆💖
         </h1>
     </div>
     `;
-}
+});
 </script>
 
 </body>
