@@ -23,26 +23,31 @@ body {
 }
 
 .container {
-    background: rgba(255, 182, 193, 0.7);
+    background: rgba(255, 182, 193, 0.8);
     padding: 40px;
     border-radius: 20px;
     text-align: center;
+    position: relative;
 }
 
 h1 {
     color: white;
     margin-bottom: 20px;
-    font-size: 28px;
+    font-size: 24px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
 }
 
 button {
     padding: 12px 25px;
     font-size: 18px;
-    margin: 10px;
     border: none;
     border-radius: 20px;
     cursor: pointer;
-    transition: 0.3s;
 }
 
 #yes {
@@ -50,14 +55,10 @@ button {
     color: white;
 }
 
-#yes:hover {
-    transform: scale(1.1);
-}
-
 #no {
     background: gray;
     color: white;
-    position: absolute;
+    position: relative;
 }
 </style>
 </head>
@@ -66,31 +67,38 @@ button {
 
 <div class="container">
     <h1>Mau gak jadi pacarku? 🌷❤️</h1>
-    <button id="yes">Yes</button>
-    <button id="no">No</button>
+    <div class="buttons">
+        <button id="yes">Yes</button>
+        <button id="no">No</button>
+    </div>
 </div>
 
 <script>
 const noBtn = document.getElementById("no");
 const yesBtn = document.getElementById("yes");
 
-// Tombol No kabur
-noBtn.addEventListener("mouseover", function() {
+// Fungsi bikin tombol No kabur (support HP & laptop)
+function kabur() {
     const x = Math.random() * (window.innerWidth - 100);
     const y = Math.random() * (window.innerHeight - 50);
+    noBtn.style.position = "fixed";
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
-});
+}
+
+// Untuk laptop
+noBtn.addEventListener("mouseover", kabur);
+
+// Untuk HP
+noBtn.addEventListener("touchstart", kabur);
 
 // Klik Yes
 yesBtn.addEventListener("click", function() {
 
-    // Putar musik
     const music = new Audio("lagu.mp3");
     music.loop = true;
     music.play();
 
-    // Ganti tampilan
     document.body.innerHTML = `
     <div style="
         height:100vh;
@@ -101,9 +109,9 @@ yesBtn.addEventListener("click", function() {
         ">
         <h1 style="
             color:white;
-            font-size:40px;
-            text-shadow:2px 2px 5px hotpink;
-            background:rgba(255,182,193,0.7);
+            font-size:32px;
+            text-align:center;
+            background:rgba(255,182,193,0.8);
             padding:30px;
             border-radius:20px;
         ">
