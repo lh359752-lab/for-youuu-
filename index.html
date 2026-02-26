@@ -2,7 +2,8 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Pertanyaan Penting 🌷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tulip Untukmu 🌷</title>
 
 <style>
 body {
@@ -12,13 +13,11 @@ body {
     font-family: 'Comic Sans MS', cursive;
     height: 100vh;
     overflow: hidden;
-    
-    /* Background tulip cute */
     background: url('https://images.unsplash.com/photo-1520637836862-4d197d17c3a4') no-repeat center center/cover;
 }
 
 .overlay {
-    background: rgba(255, 192, 203, 0.6);
+    background: rgba(255, 182, 193, 0.6);
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -28,8 +27,8 @@ body {
 
 h1 {
     font-size: 32px;
-    color: #fff;
-    text-shadow: 2px 2px 5px #ff1493;
+    color: white;
+    text-shadow: 2px 2px 5px hotpink;
 }
 
 button {
@@ -60,15 +59,12 @@ button {
 </head>
 
 <body>
+
+<!-- BACKSOUND -->
 <audio id="bgm" loop>
   <source src="lagu.mp3" type="audio/mpeg">
 </audio>
 
-<script>
-document.body.addEventListener("click", function() {
-  document.getElementById("bgm").play();
-});
-</script>
 <div class="overlay">
     <h1>Mau gak jadi pacarku? 🌷❤️</h1>
     <button id="yes" onclick="jawabYes()">Yes</button>
@@ -76,7 +72,19 @@ document.body.addEventListener("click", function() {
 </div>
 
 <script>
+function kabur() {
+    let x = Math.random() * (window.innerWidth - 100);
+    let y = Math.random() * (window.innerHeight - 50);
+    document.getElementById("no").style.left = x + "px";
+    document.getElementById("no").style.top = y + "px";
+}
+
 function jawabYes() {
+
+    // Putar musik saat klik YES
+    document.getElementById("bgm").play();
+
+    // Ganti tampilan
     document.body.innerHTML = `
     <div style="display:flex;justify-content:center;align-items:center;height:100vh;
     background:url('https://images.unsplash.com/photo-1520637836862-4d197d17c3a4') no-repeat center center/cover;">
@@ -85,13 +93,6 @@ function jawabYes() {
         </h1>
     </div>
     `;
-}
-
-function kabur() {
-    let x = Math.random() * (window.innerWidth - 100);
-    let y = Math.random() * (window.innerHeight - 50);
-    document.getElementById("no").style.left = x + "px";
-    document.getElementById("no").style.top = y + "px";
 }
 </script>
 
